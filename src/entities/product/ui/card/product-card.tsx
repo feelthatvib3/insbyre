@@ -1,13 +1,7 @@
 'use client';
 
-import {
-  CurrencyRubIcon,
-  EnvelopeSimpleIcon,
-  PlusIcon,
-  ShoppingBagIcon
-} from '@phosphor-icons/react';
+import { ShoppingBagIcon } from '@phosphor-icons/react';
 import Image from 'next/image';
-import Link from 'next/link';
 
 import type { Product } from 'entities/product';
 
