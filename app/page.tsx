@@ -59,13 +59,12 @@ export default function Page() {
             <div className="bg-muted group hover:border-input-border-hover flowers relative h-auto overflow-hidden rounded-2xl border transition duration-300">
               <InsbyreKeychain />
               <Button
-                variant="outline-brand"
                 rounded="full"
                 className="absolute right-4 bottom-4 font-normal uppercase"
                 onClick={() => increment()}
               >
                 <ShoppingBagIcon className="size-5" weight="fill" />
-                <span>В корзину</span>
+                <span>Хочу</span>
               </Button>
             </div>
           </div>
