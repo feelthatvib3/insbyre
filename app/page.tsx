@@ -7,9 +7,12 @@ import { ContactsTile } from 'widgets/contacts-tile';
 import { Header } from 'widgets/header';
 import { InsbyreKeychain } from 'widgets/insbyre-keychain';
 
+import { useCartStore } from 'features/cart';
+
 import { Button } from 'shared/ui/button';
 
 export default function Page() {
+  const { increment } = useCartStore();
   return (
     <main>
       <section className="min-h-dvh">
@@ -59,6 +62,7 @@ export default function Page() {
                 variant="outline-brand"
                 rounded="full"
                 className="absolute right-4 bottom-4 font-normal uppercase"
+                onClick={() => increment()}
               >
                 <ShoppingBagIcon className="size-5" weight="fill" />
                 <span>В корзину</span>

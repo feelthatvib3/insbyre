@@ -4,6 +4,8 @@ import { ShoppingBagIcon } from '@phosphor-icons/react';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { useCartStore } from 'features/cart';
+
 import type { Product } from 'entities/product';
 
 import { Button } from 'shared/ui/button';
@@ -13,6 +15,7 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product }: ProductCardProps) {
+  const { increment } = useCartStore();
   return (
     <Link href={`/catalogue/${product.slug}`} className="group block overflow-hidden">
       <div className="">
@@ -32,7 +35,15 @@ export function ProductCard({ product }: ProductCardProps) {
           <p className="text-muted-foreground line-clamp-2">{product.description}</p>
         </div>
         <div className="flex items-center gap-x-2 p-2 pt-4">
-          <Button variant="outline-brand" rounded="full" className="uppercase">
+          <Button
+            variant="outline-brand"
+            rounded="full"
+            className="uppercase"
+            onClick={(e) => {
+              e.preventDefault();
+              increment();
+            }}
+          >
             <ShoppingBagIcon className="size-5" weight="fill" />
             <span>В корзину</span>
           </Button>
