@@ -30,7 +30,7 @@ export function Menu() {
 
       <div
         className={cn(
-          'bg-united-nations-blue/15 pointer-events-none fixed inset-0 z-40 backdrop-blur-lg transition duration-300',
+          'bg-united-nations-blue/15 pointer-events-none fixed inset-0 z-40 backdrop-blur-2xl transition duration-300',
           open ? 'opacity-100' : 'opacity-0'
         )}
       />
