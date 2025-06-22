@@ -7,6 +7,8 @@ import { ContactsTile } from 'widgets/contacts-tile';
 import { Header } from 'widgets/header';
 import { InsbyreKeychain } from 'widgets/insbyre-keychain';
 
+import { Button } from 'shared/ui/button';
+
 export default function Page() {
   return (
     <main>
@@ -53,12 +55,14 @@ export default function Page() {
             {/* Right full-height tile */}
             <div className="bg-muted group hover:border-input-border-hover flowers relative h-auto overflow-hidden rounded-2xl border transition duration-300">
               <InsbyreKeychain />
-              <Link
-                href="/f"
-                className="group bg-primary text-background absolute right-4 bottom-4 flex max-w-[250px] translate-x-10 cursor-pointer items-center justify-between gap-x-16 rounded-md p-2 opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100"
+              <Button
+                variant="outline-brand"
+                rounded="full"
+                className="absolute right-4 bottom-4 font-normal uppercase"
               >
-                <ShoppingBagIcon weight="fill" />
-              </Link>
+                <ShoppingBagIcon className="size-5" weight="fill" />
+                <span>В корзину</span>
+              </Button>
             </div>
           </div>
         </div>

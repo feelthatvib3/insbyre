@@ -40,6 +40,9 @@
 }
 
 @theme inline {
+  --breakpoint-560: 35rem;
+  --breakpoint-760: 48rem;
+
   --color-au-chico: var(--au-chico);
   --color-united-nations-blue: var(--united-nations-blue);
   --color-cabbage-pont: var(--cabbage-pont);
