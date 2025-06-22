@@ -19,9 +19,7 @@ export function Menu() {
         variant="outline"
         className={cn(
           'relative z-45 w-[38px] flex-col gap-y-1 rounded-full !px-2',
-          open
-            ? 'bg-united-nations-blue text-background border-united-nations-blue hover:border-united-nations-blue'
-            : ''
+          open ? 'bg-background' : ''
         )}
         onClick={() => setOpen(!open)}
       >
