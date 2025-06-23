@@ -2,12 +2,12 @@ import { Skeleton } from 'shared/ui/skeleton';
 
 export function ProductListSkeleton() {
   return (
-    <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="560:grid-cols-2 760:grid-cols-3 grid grid-cols-1 gap-4 lg:grid-cols-3">
       {Array.from({ length: 6 })
         .fill(null)
         .map((_, i) => (
-          <div key={i} className="-z-10 space-y-4">
-            <Skeleton className="h-[290px] rounded-2xl" />
+          <div key={i} className="-z-10 w-full space-y-4">
+            <Skeleton className="h-[230px] rounded-2xl" />
             <Skeleton className="h-[28px] w-[150px] rounded-lg" />
             <div className="space-y-1">
               <Skeleton className="h-[16px] w-[256px] rounded-lg" />
@@ -21,5 +21,4 @@ export function ProductListSkeleton() {
         ))}
     </div>
   );
-  return;
 }

@@ -28,28 +28,28 @@ export function InsbyreKeychain() {
         <color attach="background" />
         <Lightformer
           intensity={2}
-          color="black"
+          color="#6482e4"
           position={[0, -1, 5]}
           rotation={[0, 0, Math.PI / 3]}
           scale={[100, 0.1, 1]}
         />
         <Lightformer
           intensity={3}
-          color="black"
+          color="#6482e4"
           position={[-1, -1, 1]}
           rotation={[0, 0, Math.PI / 3]}
           scale={[100, 0.1, 1]}
         />
         <Lightformer
           intensity={3}
-          color="black"
+          color="#6482e4"
           position={[1, 1, 1]}
           rotation={[0, 0, Math.PI / 3]}
           scale={[100, 0.1, 1]}
         />
         <Lightformer
           intensity={10}
-          color="black"
+          color="#6482e4"
           position={[-10, 0, 14]}
           rotation={[0, Math.PI / 2, Math.PI / 3]}
           scale={[100, 10, 1]}

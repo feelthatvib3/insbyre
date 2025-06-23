@@ -30,7 +30,7 @@ export function Menu() {
 
       <div
         className={cn(
-          'bg-united-nations-blue/15 pointer-events-none fixed inset-0 z-40 backdrop-blur-2xl transition duration-300',
+          'bg-united-nations-blue/15 pointer-events-none fixed inset-0 z-40 backdrop-blur-3xl transition duration-300',
           open ? 'opacity-100' : 'opacity-0'
         )}
       />
@@ -57,13 +57,13 @@ export function Menu() {
               <Link
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="hover:bg-united-nations-blue/5 flex items-center gap-x-2 rounded-[8px] p-3 transition"
+                className="hover:bg-united-nations-blue/5 flex items-center gap-x-3 rounded-[8px] p-3 transition sm:gap-x-4 sm:p-4"
               >
                 <item.icon
-                  className="text-united-nations-blue transition duration-300"
+                  className="text-united-nations-blue size-5 transition duration-300"
                   weight="fill"
                 />
-                <span className="font-display uppercase">{item.name}</span>
+                <span className="font-display text-lg uppercase">{item.name}</span>
               </Link>
             </motion.li>
           ))}

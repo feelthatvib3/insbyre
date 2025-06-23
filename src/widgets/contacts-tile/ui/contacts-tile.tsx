@@ -7,6 +7,8 @@ import { useState } from 'react';
 
 import { contacts } from 'entities/menu';
 
+import { cn } from 'shared/lib/cn';
+
 export function ContactsTile() {
   const [open, setOpen] = useState(false);
 
@@ -25,7 +27,7 @@ export function ContactsTile() {
           opacity: { duration: 0.3 },
           scale: { duration: 0 }
         }}
-        className="bg-muted hover:border-input-border-hover absolute inset-0 z-10 flex cursor-pointer items-center justify-center rounded-2xl border p-4 transition duration-300 md:items-end md:justify-start"
+        className="bg-united-nations-blue/5 border-united-nations-blue/25 hover:border-united-nations-blue/50 absolute inset-0 z-10 flex cursor-pointer items-center justify-center rounded-2xl border p-4 transition duration-300 md:items-end md:justify-start"
       >
         <div className="relative flex items-center gap-x-2">
           <h2 className="font-display z-[1] text-lg uppercase transition duration-300 group-hover:translate-x-4 sm:text-3xl">
@@ -55,7 +57,12 @@ export function ContactsTile() {
             href={item.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-muted hover:border-input-border-hover font-display flex size-full items-center justify-center gap-x-2 rounded-2xl border p-4 uppercase transition sm:text-2xl"
+            className={cn(
+              'font-display flex size-full items-center justify-center gap-x-2 rounded-2xl border p-4 uppercase transition sm:text-2xl',
+              item.name === 'Telegram'
+                ? 'bg-telegram/5 border-telegram/25 hover:border-telegram/50'
+                : 'bg-instagram/5 border-instagram/25 hover:border-instagram/50'
+            )}
           >
             <p className="md:hidden lg:block">{item.name}</p>
             <item.icon
@@ -67,7 +74,7 @@ export function ContactsTile() {
 
         {/* Close button */}
         <button
-          className="bg-muted hover:bg-muted-foreground/5 hover:border-input-border-hover flex size-full cursor-pointer items-center justify-center rounded-2xl border p-2 transition"
+          className="bg-destructive/5 border-destructive/20 hover:border-destructive/35 flex size-full cursor-pointer items-center justify-center rounded-2xl border p-2 transition"
           onClick={() => setOpen(false)}
         >
           <XIcon className="size-6" />
