@@ -45,7 +45,7 @@ export function Menu() {
         )}
       >
         <motion.ul
-          className="bg-muted flex flex-col gap-y-2 rounded-2xl p-2 shadow-2xl"
+          className="bg-muted flex flex-col rounded-2xl p-2 shadow-2xl"
           initial={{ opacity: 0, y: -10 }}
           animate={open ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }}
           transition={{
@@ -53,7 +53,7 @@ export function Menu() {
           }}
         >
           {menu.map((item, index) => (
-            <motion.li key={index} className="">
+            <motion.li key={index}>
               <Link
                 href={item.href}
                 onClick={() => setOpen(false)}
