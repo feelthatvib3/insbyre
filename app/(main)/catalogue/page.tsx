@@ -2,12 +2,12 @@ import { Suspense } from 'react';
 
 import { CataloguePage } from 'pages/catalogue';
 
-export default function Page({ searchParams }: { searchParams: { c?: string } }) {
-  const category = searchParams.c ?? undefined;
+export default async function Page({ searchParams }: { searchParams: Promise<{ c?: string }> }) {
+  const { c } = await searchParams;
 
   return (
     <Suspense fallback={null}>
-      <CataloguePage category={category} />
+      <CataloguePage category={c} />
     </Suspense>
   );
 }
