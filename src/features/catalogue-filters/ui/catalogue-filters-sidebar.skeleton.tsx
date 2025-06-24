@@ -15,11 +15,11 @@ export function CatalogueFiltersSidebarSkeleton() {
       </div>
       <div className="space-y-4">
         <Skeleton className="h-7 w-[60px]" />
-        <div className="space-y-4">
-          <Skeleton className="h-2 rounded-full" />
+        <div className="space-y-2">
+          <Skeleton className="h-[38px] rounded-full" />
           <div className="flex items-center justify-between">
-            <Skeleton className="h-6 w-[48px]" />
-            <Skeleton className="h-6 w-[48px]" />
+            <Skeleton className="h-4 w-[75px]" />
+            <Skeleton className="h-4 w-[75px]" />
           </div>
         </div>
       </div>

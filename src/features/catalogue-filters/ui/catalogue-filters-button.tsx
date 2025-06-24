@@ -18,10 +18,7 @@ export function CatalogueFiltersButton({
       variant={selected ? 'outline-brand' : 'outline'}
       size="sm"
       rounded="full"
-      className={cn(
-        'hover:bg-united-nations-blue/5 hover:border-united-nations-blue/25',
-        selected ? 'font-normal' : 'font-normal'
-      )}
+      className={cn('hover:bg-united-nations-blue/5 hover:border-united-nations-blue/25')}
       {...props}
     >
       {children}

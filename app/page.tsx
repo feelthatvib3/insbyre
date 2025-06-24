@@ -51,7 +51,7 @@ export default function Page() {
             </div>
 
             {/* Right full-height tile */}
-            <div className="bg-united-nations-blue/5 border-united-nations-blue/15 group relative h-auto overflow-hidden rounded-2xl border transition duration-300">
+            <div className="bg-united-nations-blue/5 flowers border-united-nations-blue/15 group relative h-auto overflow-hidden rounded-2xl border transition duration-300">
               <InsbyreKeychain />
             </div>
           </div>
