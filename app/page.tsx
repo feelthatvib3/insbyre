@@ -18,7 +18,7 @@ export default function Page() {
             {/* Left Column */}
             <div className="flex flex-col justify-between gap-4">
               {/* Top-left large tile */}
-              <div className="bg-united-nations-blue/5 border-united-nations-blue/25 hover:border-united-nations-blue/50 min-h-[250px] rounded-2xl border transition duration-300 sm:min-h-auto md:h-[70%]">
+              <div className="bg-united-nations-blue/5 flowers border-united-nations-blue/25 hover:border-united-nations-blue/50 min-h-[250px] rounded-2xl border transition duration-300 sm:min-h-auto md:h-[70%]">
                 <div className="flex h-full flex-col justify-between gap-4 p-4 sm:gap-8 sm:p-8 md:p-4 lg:p-8">
                   <h1 className="font-display text-2xl uppercase sm:text-3xl lg:text-4xl xl:text-5xl">
                     Одежда, в которой ты к месту
@@ -34,7 +34,7 @@ export default function Page() {
               <div className="flex h-full gap-4 md:h-[30%] md:flex-col lg:flex-row">
                 <Link
                   href="/catalogue"
-                  className="bg-united-nations-blue/5 border-united-nations-blue/25 group hover:border-united-nations-blue/50 relative flex size-full items-center justify-center rounded-2xl border p-4 transition duration-300 md:items-end md:justify-start"
+                  className="flowers bg-united-nations-blue/5 border-united-nations-blue/25 group hover:border-united-nations-blue/50 shadow-united-nations-blue/25 relative flex size-full items-center justify-center rounded-2xl border p-4 transition duration-300 md:items-end md:justify-start"
                 >
                   <div className="relative flex items-center gap-x-2">
                     <CoatHangerIcon

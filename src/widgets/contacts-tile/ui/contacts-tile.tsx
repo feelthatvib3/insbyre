@@ -27,7 +27,7 @@ export function ContactsTile() {
           opacity: { duration: 0.3 },
           scale: { duration: 0 }
         }}
-        className="bg-united-nations-blue/5 border-united-nations-blue/25 hover:border-united-nations-blue/50 absolute inset-0 z-10 flex cursor-pointer items-center justify-center rounded-2xl border p-4 transition duration-300 md:items-end md:justify-start"
+        className="bg-united-nations-blue/5 flowers border-united-nations-blue/25 hover:border-united-nations-blue/50 absolute inset-0 z-10 flex cursor-pointer items-center justify-center rounded-2xl border p-4 transition duration-300 md:items-end md:justify-start"
       >
         <div className="relative flex items-center gap-x-2">
           <h2 className="font-display z-[1] text-lg uppercase transition duration-300 group-hover:translate-x-4 sm:text-3xl">
