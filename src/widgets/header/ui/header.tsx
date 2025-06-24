@@ -11,7 +11,11 @@ interface HeaderProps {
 
 export function Header({ sticky }: HeaderProps) {
   return (
-    <header className={cn(sticky ? 'bg-background sticky top-0 border-b' : undefined)}>
+    <header
+      className={cn(
+        sticky ? 'bg-background border-b-united-nations-blue/10 sticky top-0 border-b' : undefined
+      )}
+    >
       <div className="mx-auto flex max-w-[1200px] items-center justify-between px-4 py-4 xl:px-0">
         <Link href="/" className="font-display z-45 text-xl uppercase">
           Insbyre

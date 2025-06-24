@@ -51,7 +51,7 @@ export function CatalogueFiltersSidebar({
   }
 
   return (
-    <div className="sticky top-[calc(68px+1rem)] z-auto h-fit min-h-[512px] w-full max-w-[228px] space-y-8">
+    <div className="bg-background top-[calc(68px+1rem)] z-auto h-fit min-h-[512px] w-full max-w-[228px] space-y-8 rounded-2xl p-2">
       <div className="space-y-4">
         <h3 className="font-display text-lg uppercase">Категория</h3>
         <ul className="flex flex-wrap items-center gap-1.5">

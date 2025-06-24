@@ -28,9 +28,9 @@
 
   --placeholder: oklch(0.65 0 0);
 
-  --au-chico: oklch(53.42% 0.131 23.42);
+  --au-chico: #f5d487;
   --united-nations-blue: #6482e4;
-  --cabbage-pont: oklch(41.49% 0.083 147.61);
+  --cabbage-pont: #cbe18e;
   --telegram: #24a1de;
   --instagram: #ff7a00;
 
@@ -109,5 +109,19 @@
   .flowers {
     background-image: url('../../public/flowers.svg');
     background-repeat: repeat;
+    background-position: center;
+  }
+
+  .flowers-cover {
+    background-image: url('../../public/flowers.svg');
+    background-repeat: repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .flowers-01 {
+    background-image: url('../../public/flowers-01.svg');
+    background-repeat: repeat;
+    background-position: center;
   }
 }

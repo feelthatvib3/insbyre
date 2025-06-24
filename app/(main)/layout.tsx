@@ -8,7 +8,7 @@ export default function Layout({
   children: ReactNode;
 }>) {
   return (
-    <main>
+    <main className="flowers-01">
       <Header sticky />
       {children}
     </main>

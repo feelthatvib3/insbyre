@@ -13,6 +13,7 @@ import {
 import { MeshLineGeometry, MeshLineMaterial } from 'meshline';
 import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
+import { useMediaQuery } from 'usehooks-ts';
 
 extend({ MeshLineGeometry, MeshLineMaterial });
 useTexture.preload('/textures/rope.jpg');
@@ -28,13 +29,13 @@ export function InsbyreKeychain() {
         <color attach="background" />
         <Lightformer
           intensity={2}
-          color="#6482e4"
+          color="#6482e4" // #6482e4
           position={[0, -1, 5]}
           rotation={[0, 0, Math.PI / 3]}
           scale={[100, 0.1, 1]}
         />
         <Lightformer
-          intensity={3}
+          intensity={30}
           color="#6482e4"
           position={[-1, -1, 1]}
           rotation={[0, 0, Math.PI / 3]}
@@ -164,6 +165,32 @@ function Keychain({ maxSpeed = 50, minSpeed = 10 }) {
   curve.curveType = 'chordal';
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
 
+  const min375 = useMediaQuery('(min-width: 375px)');
+  const min768 = useMediaQuery('(min-width: 768px)');
+  const min1024 = useMediaQuery('(min-width: 1024px)');
+
+  const modelSizeMap = {
+    min375: [[5], [-0.05, -1.025, -0.05]],
+    min768: [[4.5], [-0.05, -0.75, -0.05]],
+    min1024: [[5], [-0.05, -1.025, -0.05]]
+  };
+
+  const scale = min1024
+    ? modelSizeMap.min1024[0][0]
+    : min768
+      ? modelSizeMap.min768[0][0]
+      : min375
+        ? modelSizeMap.min375[0][0]
+        : 4;
+
+  const position = min1024
+    ? modelSizeMap.min1024[1]
+    : min768
+      ? modelSizeMap.min768[1]
+      : min375
+        ? modelSizeMap.min375[1]
+        : 0;
+
   return (
     <>
       <group position={[0, 4.15, 0]}>
@@ -185,8 +212,8 @@ function Keychain({ maxSpeed = 50, minSpeed = 10 }) {
         >
           <CuboidCollider args={[1, 1.125, 0.01]} />
           <group
-            scale={4}
-            position={[-0.05, -0.5, -0.05]}
+            scale={scale}
+            position={position}
             onPointerOver={() => hover(true)}
             onPointerOut={() => hover(false)}
             onPointerUp={(e) => (e.target.releasePointerCapture(e.pointerId), drag(false))}
