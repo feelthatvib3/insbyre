@@ -3,8 +3,8 @@ import { BaseballCapIcon, PantsIcon, SparkleIcon, TShirtIcon } from '@phosphor-i
 import type { MenuItem } from 'entities/menu';
 
 export const menu: MenuItem[] = [
-  { name: 'Новинки', href: '/catalogue?c=new', icon: SparkleIcon },
-  { name: 'Верх', href: '/catalogue?c=top', icon: TShirtIcon },
-  { name: 'Низ', href: '/catalogue?c=bottom', icon: PantsIcon },
-  { name: 'Аксессуары', href: '/catalogue?c=accessories', icon: BaseballCapIcon }
+  { name: 'Новинки', href: '/catalogue/new', icon: SparkleIcon },
+  { name: 'Верх', href: '/catalogue/top', icon: TShirtIcon },
+  { name: 'Низ', href: '/catalogue/bottom', icon: PantsIcon },
+  { name: 'Аксессуары', href: '/catalogue/accessories', icon: BaseballCapIcon }
 ];

@@ -1,55 +1,43 @@
 'use client';
 
-import { ShoppingBagIcon } from '@phosphor-icons/react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { useCartStore } from 'features/cart';
-
-import type { Product } from 'entities/product';
-
-import { Button } from 'shared/ui/button';
+import type { SerializedProduct } from 'shared/types/product';
 
 interface ProductCardProps {
-  product: Product;
+  product: SerializedProduct;
 }
 
 export function ProductCard({ product }: ProductCardProps) {
-  const { increment } = useCartStore();
+  const options: Intl.NumberFormatOptions = {
+    style: 'currency',
+    currency: 'RUB',
+    trailingZeroDisplay: 'stripIfInteger'
+  };
+  const priceFormat = new Intl.NumberFormat('ru-RU', options);
+
   return (
     <Link
-      href={`/catalogue/${product.slug}`}
-      className="group flex h-full flex-col justify-between overflow-hidden"
+      href={`/product/${product.slug}`}
+      className="group group flex h-full flex-col justify-between overflow-hidden"
     >
-      <div className="bg-muted group-hover:bg-united-nations-blue/5 group-hover:border-united-nations-blue/25 rounded-2xl border p-2 transition">
-        <div className="aspect-[1/0.75] overflow-hidden rounded-[8px]">
+      <div className="bg-united-nations-blue/5 flowers border-united-nations-blue/15 rounded-2xl border p-2 transition-all duration-300 group-hover:border-transparent group-hover:p-0">
+        <div className="aspect-[1] overflow-hidden rounded-[8px] transition-all duration-300 group-hover:rounded-2xl">
           <Image
             src={product.thumbnail || product.images[0]}
             alt={product.name}
-            width={500}
-            height={500}
+            width={750}
+            height={750}
             className="size-full object-cover"
           />
         </div>
       </div>
-      <div className="flex grow flex-col gap-2 px-2 pt-4">
-        <h2 className="font-display text-xl tracking-wide uppercase">{product.name}</h2>
-        <p className="text-muted-foreground line-clamp-3">{product.description}</p>
-      </div>
-      <div className="flex items-center gap-x-2 p-2 pt-4">
-        <Button
-          variant="outline-brand"
-          rounded="full"
-          className="uppercase"
-          onClick={(e) => {
-            e.preventDefault();
-            increment();
-          }}
-        >
-          <ShoppingBagIcon className="size-5" weight="fill" />
-          <span>В корзину</span>
-        </Button>
-        <p>{Number(product.price).toLocaleString()} ₽</p>
+      <div className="space-y-0 px-2 pt-2 pb-2">
+        <h2 className="group-hover:text-united-nations-blue font-medium uppercase transition-colors duration-300">
+          {product.name}
+        </h2>
+        <p className="text-muted-foreground">{priceFormat.format(product.price)}</p>
       </div>
     </Link>
   );

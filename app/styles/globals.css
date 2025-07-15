@@ -112,11 +112,16 @@
     background-position: center;
   }
 
-  .flowers-cover {
-    background-image: url('../../public/flowers.svg');
+  .flowers-white {
+    background-image: url('../../public/flowers-white.svg');
     background-repeat: repeat;
     background-position: center;
-    background-size: cover;
+  }
+
+  .flowers-white-01 {
+    background-image: url('../../public/flowers-white-01.svg');
+    background-repeat: repeat;
+    background-position: center;
   }
 
   .flowers-01 {

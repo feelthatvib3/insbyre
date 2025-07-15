@@ -1,6 +1,11 @@
+import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 
 import { Header } from 'widgets/header';
+
+export const metadata: Metadata = {
+  title: 'INSBYRE — каталог'
+};
 
 export default function Layout({
   children
@@ -8,7 +13,7 @@ export default function Layout({
   children: ReactNode;
 }>) {
   return (
-    <main className="flowers-01">
+    <main className="min-h-dvh">
       <Header sticky />
       {children}
     </main>

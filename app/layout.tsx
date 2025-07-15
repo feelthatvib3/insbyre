@@ -19,7 +19,7 @@ const display = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'Insbyre',
+  title: 'INSBYRE',
   description: 'Одежда, в которой ты к месту.'
 };
 

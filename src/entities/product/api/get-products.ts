@@ -1,29 +1,28 @@
-import type { CatalogueFilters } from 'features/catalogue-filters';
+import { cache } from 'react';
 
-import type { Product } from 'entities/product';
+import { serializeProduct } from 'entities/product';
 
-import { BASE_URL } from 'shared/constants/app';
+import { prisma } from 'shared/lib/prisma';
+import type { CatalogueFilters } from 'shared/types/catalogue';
+import type { SerializedProduct } from 'shared/types/product';
 
 interface GetProductsParams {
   filters: CatalogueFilters;
 }
 
-export const getProducts = async ({ filters }: GetProductsParams): Promise<Product[]> => {
-  const params = new URLSearchParams();
+export const getProducts = cache(
+  async ({ filters }: GetProductsParams): Promise<SerializedProduct[]> => {
+    const where = {
+      category: filters.category ? { slug: filters.category } : undefined
+    };
 
-  if (filters.category) params.set('category', filters.category);
-  if (filters.minPrice != null) params.set('minPrice', filters.minPrice.toString());
-  if (filters.maxPrice != null) params.set('maxPrice', filters.maxPrice.toString());
-  if (filters.sort) params.set('sort', filters.sort);
+    const products = await prisma.product.findMany({
+      where,
+      orderBy: {
+        createdAt: 'desc'
+      }
+    });
 
-  const res = await fetch(`${BASE_URL}/api/catalogue?${params.toString()}`);
-
-  if (!res.ok) {
-    const { message } = await res.json().catch(() => ({
-      message: 'Не удалось получить список товаров'
-    }));
-    throw new Error(message);
+    return products.map(serializeProduct);
   }
-
-  return res.json();
-};
+);

@@ -9,26 +9,42 @@ datasource db {
 }
 
 model Product {
-  id          String   @id @default(uuid())
-  name        String
-  slug        String   @unique
-  description String?
-  price       Decimal  @db.Decimal(10, 2)
-  images      String[]
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id               String   @id @default(uuid())
+  name             String
+  slug             String   @unique
+  description      String?
+  price            Decimal  @db.Decimal(10, 2)
+  images           String[]
+  fabric           String?
+  fit              String?
+  careInstructions String[]
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
 
   categoryId String
   category   Category @relation(fields: [categoryId], references: [id])
 
   tags       String[]
-  isFeatured Boolean  @default(false)
-  inStock    Boolean  @default(true)
+  isFeatured Boolean       @default(false)
+  inStock    Boolean       @default(true)
   thumbnail  String?
+  sizes      ProductSize[] @relation("ProductToSize")
 
   @@index([categoryId])
   @@index([isFeatured])
   @@index([inStock])
+}
+
+model ProductSize {
+  id      String  @id @default(uuid())
+  size    String
+  inStock Boolean @default(true)
+
+  product   Product @relation("ProductToSize", fields: [productId], references: [id])
+  productId String
+
+  @@unique([productId, size])
+  @@index([productId])
 }
 
 model Category {

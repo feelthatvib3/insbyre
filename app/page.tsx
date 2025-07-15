@@ -18,7 +18,7 @@ export default function Page() {
             {/* Left Column */}
             <div className="flex flex-col justify-between gap-4">
               {/* Top-left large tile */}
-              <div className="bg-united-nations-blue/5 flowers border-united-nations-blue/15 min-h-[250px] rounded-2xl border transition duration-300 md:h-[80%]">
+              <div className="bg-united-nations-blue/5 flowers border-united-nations-blue/15 min-h-[250px] rounded-2xl border md:h-[80%]">
                 <div className="flex h-full flex-col justify-between gap-4 p-4 sm:gap-8 sm:p-8 md:p-4 lg:p-8">
                   <h1 className="font-display bg-background/5 text-2xl uppercase backdrop-blur-xs sm:text-3xl lg:text-4xl xl:text-5xl">
                     Одежда, в которой ты к месту
@@ -51,7 +51,7 @@ export default function Page() {
             </div>
 
             {/* Right full-height tile */}
-            <div className="bg-united-nations-blue/5 flowers border-united-nations-blue/15 group relative h-auto overflow-hidden rounded-2xl border transition duration-300">
+            <div className="bg-united-nations-blue/5 flowers border-united-nations-blue/15 group relative h-auto overflow-hidden rounded-2xl border">
               <InsbyreKeychain />
             </div>
           </div>
