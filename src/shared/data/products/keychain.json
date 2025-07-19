@@ -1,0 +1,17 @@
+{
+  "price": 700,
+  "name": "Брелок",
+  "slug": "keychain",
+  "thumbnail": "/uploads/keychain-1.webp",
+  "updatedAt": "",
+  "inStock": true,
+  "images": [
+    "/uploads/keychain-1.webp",
+    "/uploads/keychain-4.webp",
+    "/uploads/keychain-3.webp",
+    "/uploads/keychain-2.webp"
+  ],
+  "createdAt": "",
+  "categories": ["accessories", "new"],
+  "description": "Самый лучший и крутой и цветной и вообще бомбовый брелок в мире!"
+}

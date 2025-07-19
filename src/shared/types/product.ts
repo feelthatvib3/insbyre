@@ -1,9 +1,26 @@
-import type { Product, ProductSize } from '@prisma/client';
+export interface ProductSize {
+  size: string;
+  inStock: boolean;
+}
 
-export type SerializedProduct = Omit<Product, 'price' | 'createdAt' | 'updatedAt'> & {
+export interface Product {
+  id: string;
+  name: string;
+  slug: string;
+  sku: string;
+  description?: string;
   price: number;
+  images: string[];
   createdAt: string;
   updatedAt: string;
-};
-
-export type ProductWithOptionalSizes = Product & { sizes?: ProductSize[] };
+  categories: string[];
+  sizes?: ProductSize[];
+  isFeatured: boolean;
+  inStock: boolean;
+  thumbnail: string;
+  care?: string;
+  shipping?: string;
+  fit?: string;
+  materials?: string;
+  returns?: string;
+}

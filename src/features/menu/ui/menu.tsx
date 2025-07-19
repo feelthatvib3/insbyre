@@ -1,27 +1,38 @@
-'use client';
-
 import { PlusIcon } from '@phosphor-icons/react';
 import { motion } from 'motion/react';
-import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import { contacts, menu } from 'entities/menu';
+import { contacts, menu } from 'features/menu';
 
 import { cn } from 'shared/lib/cn';
+import { useOverlayStore } from 'shared/model/use-overlay-store';
 import { Button } from 'shared/ui/button';
 
 export function Menu() {
-  const [open, setOpen] = useState<boolean>(false);
+  const { isOverlayOpen, toggleOverlay, closeOverlay } = useOverlayStore();
+  const open = isOverlayOpen('menu');
+
+  const [zIndex, setZIndex] = useState<number>(45);
+
+  useEffect(() => {
+    if (!open) {
+      const timeout = setTimeout(() => setZIndex(10), 300);
+      return () => clearTimeout(timeout);
+    } else {
+      setZIndex(45);
+    }
+  }, [open]);
 
   return (
     <div className="relative">
       <Button
         variant="outline"
         className={cn(
-          'relative z-45 w-[38px] flex-col gap-y-1 rounded-full !px-2',
+          'relative gap-x-0.5 rounded-full !px-2 transition-all',
           open ? 'bg-background' : ''
         )}
-        onClick={() => setOpen(!open)}
+        style={{ zIndex }}
+        onClick={() => toggleOverlay('menu')}
       >
         <PlusIcon
           className={cn('size-5 transition duration-300', open ? 'rotate-45' : 'rotate-0')}
@@ -36,7 +47,7 @@ export function Menu() {
       />
 
       {/* invisible full-screen layer for outside clicks */}
-      {open && <div onClick={() => setOpen(false)} className="fixed inset-0 z-30" />}
+      {open && <div onClick={closeOverlay} className="fixed inset-0 z-30" />}
 
       <div
         className={cn(
@@ -54,9 +65,9 @@ export function Menu() {
         >
           {menu.map((item, index) => (
             <motion.li key={index}>
-              <Link
+              <a
                 href={item.href}
-                onClick={() => setOpen(false)}
+                onClick={closeOverlay}
                 className="hover:bg-united-nations-blue/5 flex items-center gap-x-3 rounded-[8px] p-3 transition sm:gap-x-4 sm:p-4"
               >
                 <item.icon
@@ -64,7 +75,7 @@ export function Menu() {
                   weight="fill"
                 />
                 <span className="font-display text-lg uppercase">{item.name}</span>
-              </Link>
+              </a>
             </motion.li>
           ))}
         </motion.ul>
@@ -79,17 +90,17 @@ export function Menu() {
               }}
               className="bg-muted flex w-full items-center gap-x-2 rounded-2xl shadow-2xl"
             >
-              <Link
+              <a
                 href={item.href}
                 target="_blank"
-                onClick={() => setOpen(false)}
+                onClick={closeOverlay}
                 className="hover:bg-united-nations-blue/5 flex w-full items-center justify-center gap-x-2 rounded-[8px] p-4 transition"
               >
                 <item.icon
                   className="text-united-nations-blue size-6 transition duration-300"
                   weight="fill"
                 />
-              </Link>
+              </a>
             </motion.li>
           ))}
         </motion.ul>

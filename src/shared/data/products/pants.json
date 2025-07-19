@@ -1,0 +1,26 @@
+{
+  "price": 8000,
+  "name": "Брюки",
+  "slug": "pants",
+  "thumbnail": "/uploads/img_4321.webp",
+  "updatedAt": "2025-07-18T16:37:00.000+02:00",
+  "inStock": false,
+  "sizes": [
+    {
+      "inStock": true,
+      "size": "S"
+    },
+    {
+      "inStock": true,
+      "size": "M"
+    },
+    {
+      "inStock": true,
+      "size": "L"
+    }
+  ],
+  "images": ["/uploads/img_4321.webp", "/uploads/img_4320.webp"],
+  "createdAt": "{{now}}",
+  "categories": ["new", "bottom"],
+  "description": "Какие-то невероятные брюки, чесн слово"
+}

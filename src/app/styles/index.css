@@ -1,0 +1,156 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@font-face {
+  font-family: 'CustomSans';
+  src: url('/fonts/liter.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'CustomDisplay';
+  src: url('/fonts/murs-gothic-wide-dark.woff2') format('woff2');
+  font-display: swap;
+}
+
+:root {
+  --background: #ffffff;
+  --background-secondary: #dbdad7;
+
+  --foreground: #111111;
+  --foreground-secondary: #ffffff;
+
+  /* primary */
+  --primary: var(--foreground);
+  --primary-foreground: var(--background);
+  --primary-hover: oklch(0.34 0 0);
+
+  /* button outline */
+  --button-outline: oklch(0.975 0 0);
+  --button-outline-border: oklch(0.95 0 0);
+  --button-outline-border-hover: oklch(0.9 0 0);
+  --button-outline-border-focus: oklch(0.85 0 0);
+
+  /* input */
+  --input: oklch(0.975 0 0);
+  --input-border: oklch(0.95 0 0);
+  --input-border-hover: oklch(0.9 0 0);
+  --input-border-focus: oklch(0.85 0 0);
+
+  --destructive: oklch(63% 0.27 27);
+
+  --placeholder: oklch(0.65 0 0);
+
+  --au-chico: #f5d487;
+  --united-nations-blue: #6482e4;
+  --cabbage-pont: #cbe18e;
+  --telegram: #24a1de;
+  --instagram: #ff7a00;
+
+  --border: oklch(0.95 0 0);
+
+  --muted: oklch(0.975 0 0);
+  --muted-foreground: oklch(0.6 0 0);
+  --muted-hover: oklch(0.935 0 0);
+
+  --ghost-hover: oklch(0.975 0 0);
+
+  --font-sans: 'Liter', sans-serif;
+  --font-display: 'Murs Gothic', sans-serif;
+}
+
+@theme inline {
+  --breakpoint-560: 35rem;
+  --breakpoint-760: 48rem;
+
+  --color-au-chico: var(--au-chico);
+  --color-united-nations-blue: var(--united-nations-blue);
+  --color-cabbage-pont: var(--cabbage-pont);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-telegram: var(--telegram);
+  --color-instagram: var(--instagram);
+
+  --color-destructive: var(--destructive);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
+
+  --color-border: var(--border);
+  --color-placeholder: var(--placeholder);
+
+  --color-ghost-hover: var(--ghost-hover);
+
+  --animate-text-loop: text-loop 0.6s ease-in-out;
+
+  --color-input: var(--input);
+  --color-input-border: var(--input-border);
+  --color-input-border-hover: var(--input-border-hover);
+  --color-input-border-focus: var(--input-border-focus);
+
+  --color-button-outline: var(--button-outline);
+  --color-button-outline-border: var(--button-outline-border);
+  --color-button-outline-border-hover: var(--button-outline-border-hover);
+  --color-button-outline-border-focus: var(--button-outline-border-focus);
+
+  --color-background-secondary: var(--background-secondary);
+  --color-foreground-secondary: var(--foreground-secondary);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted-hover: var(--muted-hover);
+
+  --color-brand: var(--brand);
+
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-none;
+  }
+
+  *::selection {
+    @apply bg-[#6482e4] text-white;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  .flowers {
+    background-image: url('/images/flowers.svg');
+    background-repeat: repeat;
+    background-position: center;
+  }
+
+  .flowers-cover {
+    background-image: url('../../public/images/flowers.svg');
+    background-repeat: repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .flowers-01 {
+    background-image: url('/images/flowers-01.svg');
+    background-repeat: repeat;
+    background-position: center;
+  }
+
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type='number'] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+}

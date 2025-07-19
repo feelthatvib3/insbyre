@@ -1,7 +1,3 @@
-'use client';
-
-import Link from 'next/link';
-
 import { CartButton } from 'features/cart';
 import { Menu } from 'features/menu';
 
@@ -19,9 +15,9 @@ export function Header({ sticky }: HeaderProps) {
       )}
     >
       <div className="mx-auto flex max-w-[1200px] items-center justify-between px-4 py-4 xl:px-0">
-        <Link href="/" className="font-display z-45 text-xl uppercase">
+        <a href="/" className="font-display z-45 text-xl uppercase">
           Insbyre
-        </Link>
+        </a>
         <div className="flex items-center gap-x-2">
           <CartButton />
           <Menu />
