@@ -13,7 +13,7 @@ export function ProductGallery({ images, thumbnail }: ProductGalleryProps) {
 
   return (
     <div className="flex flex-col-reverse gap-y-2 md:flex-row md:gap-x-2">
-      <div className="flex gap-x-2 md:flex-col md:gap-x-0 md:gap-y-2">
+      <div className="flex w-full gap-x-2 md:flex-col md:gap-x-0 md:gap-y-2">
         {allImages.map((image, index) => (
           <button
             key={index}
