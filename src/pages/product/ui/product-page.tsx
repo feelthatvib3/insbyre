@@ -83,7 +83,7 @@ export const ProductPage = () => {
   return (
     <main>
       <Header sticky />
-      <div className="space-y-8 px-4 py-8 xl:px-0">
+      <div className="space-y-8 px-4 py-4 lg:py-8 xl:px-0">
         <div className="mx-auto max-w-[1200px]">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-8">
             <ProductGallery images={product.images} thumbnail={product.thumbnail} />
