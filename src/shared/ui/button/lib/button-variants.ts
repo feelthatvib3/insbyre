@@ -15,7 +15,7 @@ export const buttonVariants = cva(
         secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80 shadow-xs',
         ghost: 'hover:bg-ghost-hover bg-transparent',
         link: 'text-primary underline-offset-4 hover:underline',
-        brand: 'bg-united-nations-blue text-white'
+        brand: 'bg-united-nations-blue hover:bg-united-nations-blue-darken text-white'
       },
       size: {
         default: 'h-9 px-4 py-2 has-[>svg]:px-3',

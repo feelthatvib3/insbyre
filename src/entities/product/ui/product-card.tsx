@@ -1,3 +1,4 @@
+import { formatPrice } from 'shared/lib/format-price';
 import type { Product } from 'shared/types/product';
 
 interface ProductCardProps {
@@ -5,14 +6,6 @@ interface ProductCardProps {
 }
 
 export const ProductCard = ({ product }: ProductCardProps) => {
-  const options: Intl.NumberFormatOptions = {
-    style: 'currency',
-    currency: 'RUB',
-    currencyDisplay: 'code',
-    maximumFractionDigits: 0
-  };
-  const priceFormat = new Intl.NumberFormat('ru-RU', options);
-
   return (
     <a
       href={`/products/${product.categories[0]}/${product.slug}`}
@@ -32,7 +25,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         <h2 className="group-hover:text-united-nations-blue font-medium uppercase transition-colors duration-300">
           {product.name}
         </h2>
-        <p className="text-muted-foreground">{priceFormat.format(product.price)}</p>
+        <p className="text-muted-foreground">{formatPrice(product.price)}</p>
       </div>
     </a>
   );

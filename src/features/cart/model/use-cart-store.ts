@@ -13,6 +13,8 @@ interface Action {
   clearCart: () => void;
   getCount: () => number;
   getTotal: () => number;
+  incrementQuantity: ({ id, size }: { id: string; size?: string }) => void;
+  decrementQuantity: ({ id, size }: { id: string; size?: string }) => void;
 }
 
 export const useCartStore = create<State & Action>()(
@@ -34,7 +36,32 @@ export const useCartStore = create<State & Action>()(
       },
       removeFromCart: ({ id, size }) => {
         set({
-          items: get().items.filter((i) => !(i.id === id && i.size === size))
+          items: get().items.filter((i) => {
+            if (size !== undefined) {
+              return !(i.id === id && i.size === size);
+            }
+            return i.id !== id;
+          })
+        });
+      },
+      incrementQuantity: ({ id, size }) => {
+        set({
+          items: get().items.map((i) => {
+            const match =
+              i.id === id && (size !== undefined ? i.size === size : i.size === undefined);
+            return match ? { ...i, quantity: i.quantity + 1 } : i;
+          })
+        });
+      },
+      decrementQuantity: ({ id, size }) => {
+        set({
+          items: get()
+            .items.map((i) => {
+              const match =
+                i.id === id && (size !== undefined ? i.size === size : i.size === undefined);
+              return match ? { ...i, quantity: i.quantity - 1 } : i;
+            })
+            .filter((i) => i.quantity > 0)
         });
       },
       clearCart: () => set({ items: [] }),

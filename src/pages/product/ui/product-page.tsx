@@ -1,4 +1,6 @@
-import { ShoppingBagIcon } from '@phosphor-icons/react';
+import { CheckCircleIcon, ShoppingBagIcon } from '@phosphor-icons/react';
+import { motion } from 'motion/react';
+import { AnimatePresence } from 'motion/react';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -9,6 +11,7 @@ import { useCartStore } from 'features/cart';
 import { ProductGallery } from 'entities/product';
 
 import { cn } from 'shared/lib/cn';
+import { formatPrice } from 'shared/lib/format-price';
 import type { Product } from 'shared/types/product';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from 'shared/ui/accordion';
 import { Button } from 'shared/ui/button';
@@ -19,6 +22,7 @@ export const ProductPage = () => {
   const [error, setError] = useState(false);
   const [size, setSize] = useState<string>('');
   const [sizeError, setSizeError] = useState(false);
+  const [isAdded, setIsAdded] = useState(false);
 
   const addToCart = useCartStore((state) => state.addToCart);
 
@@ -41,6 +45,9 @@ export const ProductPage = () => {
       price: product.price,
       size
     });
+
+    setIsAdded(true);
+    setTimeout(() => setIsAdded(false), 2000);
   };
 
   useEffect(() => {
@@ -50,13 +57,6 @@ export const ProductPage = () => {
       .then((mod) => setProduct(mod.default))
       .catch(() => setError(true));
   }, [productSlug]);
-
-  const priceFormat = new Intl.NumberFormat('ru-RU', {
-    style: 'currency',
-    currency: 'RUB',
-    currencyDisplay: 'code',
-    maximumFractionDigits: 0
-  });
 
   if (error) {
     return (
@@ -89,15 +89,16 @@ export const ProductPage = () => {
             <ProductGallery images={product.images} thumbnail={product.thumbnail} />
 
             <div className="space-y-4">
-              <h1 className="text-4xl font-bold uppercase">{product.name}</h1>
+              <div className="space-y-0.5">
+                <h1 className="font-display text-4xl uppercase">{product.name}</h1>
+                <p className="text-muted-foreground text-sm">{product.sku}</p>
+              </div>
 
               {product.description && (
                 <p className="text-muted-foreground">{product.description}</p>
               )}
 
-              <div className="text-2xl font-semibold">
-                {priceFormat.format(Number(product.price))}
-              </div>
+              <div className="font-display text-2xl">{formatPrice(product.price)}</div>
 
               {product.sizes && product.sizes.length > 0 && (
                 <div className="space-y-2">
@@ -126,12 +127,44 @@ export const ProductPage = () => {
                 </div>
               )}
 
-              <Button size="lg" onClick={handleAddToCart}>
-                <ShoppingBagIcon weight="fill" className="size-5" />
+              <Button
+                size="lg"
+                variant="brand"
+                onClick={handleAddToCart}
+                className="rounded-xl px-4"
+              >
+                <AnimatePresence mode="wait" initial={false}>
+                  {isAdded ? (
+                    <motion.div
+                      key="check"
+                      initial={{ scale: 0.8, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      exit={{ scale: 0.8, opacity: 0 }}
+                      transition={{ duration: 0.15 }}
+                    >
+                      <CheckCircleIcon weight="fill" className="size-5" />
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="bag"
+                      initial={{ scale: 0.8, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      exit={{ scale: 0.8, opacity: 0 }}
+                      transition={{ duration: 0.15 }}
+                    >
+                      <ShoppingBagIcon weight="fill" className="size-5" />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
                 <span>Добавить в корзину</span>
               </Button>
 
-              <Accordion type="single" collapsible className="w-full space-y-2">
+              <Accordion
+                type="single"
+                defaultValue="materials"
+                collapsible
+                className="w-full space-y-2"
+              >
                 {product.materials && (
                   <AccordionItem value="materials">
                     <AccordionTrigger>Состав</AccordionTrigger>

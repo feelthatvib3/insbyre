@@ -43,6 +43,7 @@
 
   --au-chico: #f5d487;
   --united-nations-blue: #6482e4;
+  --united-nations-blue-darken: #4f6ed4;
   --cabbage-pont: #cbe18e;
   --telegram: #24a1de;
   --instagram: #ff7a00;
@@ -65,6 +66,7 @@
 
   --color-au-chico: var(--au-chico);
   --color-united-nations-blue: var(--united-nations-blue);
+  --color-united-nations-blue-darken: var(--united-nations-blue-darken);
   --color-cabbage-pont: var(--cabbage-pont);
 
   --color-background: var(--background);
@@ -127,14 +129,6 @@
     background-repeat: repeat;
     background-position: center;
   }
-
-  .flowers-cover {
-    background-image: url('../../public/images/flowers.svg');
-    background-repeat: repeat;
-    background-position: center;
-    background-size: cover;
-  }
-
   .flowers-01 {
     background-image: url('/images/flowers-01.svg');
     background-repeat: repeat;
