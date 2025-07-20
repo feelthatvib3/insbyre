@@ -2,14 +2,18 @@
 @import 'tw-animate-css';
 
 @font-face {
-  font-family: 'CustomSans';
-  src: url('/fonts/liter.ttf') format('truetype');
+  font-family: 'Liter';
+  src: url('/fonts/Liter-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'CustomDisplay';
-  src: url('/fonts/murs-gothic-wide-dark.ttf') format('truetype');
+  font-family: 'Murs Gothic Key';
+  src: url('/fonts/MursGothic-WideDark.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
   font-display: swap;
 }
 
@@ -57,7 +61,7 @@
   --ghost-hover: oklch(0.975 0 0);
 
   --font-sans: 'Liter', sans-serif;
-  --font-display: 'Murs Gothic', sans-serif;
+  --font-display: 'Murs Gothic Key', sans-serif;
 }
 
 @theme inline {
