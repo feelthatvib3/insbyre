@@ -9,7 +9,7 @@
 
 @font-face {
   font-family: 'CustomDisplay';
-  src: url('/fonts/murs-gothic-wide-dark.woff2') format('woff2');
+  src: url('/fonts/murs-gothic-wide-dark.ttf') format('truetype');
   font-display: swap;
 }
 
