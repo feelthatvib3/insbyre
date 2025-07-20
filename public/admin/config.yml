@@ -2,6 +2,7 @@ backend:
   name: github
   repo: feelthatvib3/insbyre
   branch: main
+  client_id: Ov23liatBKKqqBfHyNhP
 
 media_folder: 'public/uploads'
 public_folder: '/uploads'

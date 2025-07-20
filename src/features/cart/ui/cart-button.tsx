@@ -21,8 +21,7 @@ export function CartButton() {
     name: '',
     phone: '',
     address: '',
-    email: '',
-    telegram: ''
+    email: ''
   });
 
   useEffect(() => {
@@ -215,8 +214,14 @@ export function CartButton() {
               <Input
                 value={form.name}
                 onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-                placeholder="Ваше имя и фамилия"
+                placeholder="Ваши фамилия, имя, отчество"
                 required
+              />
+              <Input
+                value={form.email}
+                onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
+                type="email"
+                placeholder="Электронная почта"
               />
               <Input
                 value={form.phone}
@@ -230,19 +235,6 @@ export function CartButton() {
                 onChange={(e) => setForm((f) => ({ ...f, address: e.target.value }))}
                 placeholder="Город, улица, дом / квартира"
                 required
-              />
-            </div>
-            <div className="space-y-2 border-t p-4">
-              <Input
-                value={form.email}
-                onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
-                type="email"
-                placeholder="Электронная почта"
-              />
-              <Input
-                value={form.telegram}
-                onChange={(e) => setForm((f) => ({ ...f, telegram: e.target.value }))}
-                placeholder="@username в Telegram (если есть)"
               />
             </div>
             <div className="border-t p-4">
