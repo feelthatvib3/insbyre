@@ -13,7 +13,7 @@ export function ProductGallery({ images, thumbnail }: ProductGalleryProps) {
 
   return (
     <div className="flex flex-col-reverse gap-y-2 md:flex-row md:gap-x-2">
-      <div className="flex w-full gap-x-2 md:flex-col md:gap-x-0 md:gap-y-2">
+      <div className="flex w-fit gap-x-2 md:flex-col md:gap-x-0 md:gap-y-2">
         {allImages.map((image, index) => (
           <button
             key={index}
@@ -30,7 +30,7 @@ export function ProductGallery({ images, thumbnail }: ProductGalleryProps) {
         ))}
       </div>
 
-      <div className="aspect-[24/30] overflow-hidden rounded-2xl">
+      <div className="aspect-[24/30] w-full overflow-hidden rounded-2xl">
         <img
           src={allImages[selectedImage]}
           alt="Main product image"
