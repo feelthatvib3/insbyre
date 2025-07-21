@@ -104,14 +104,14 @@ export function CartButton() {
               <XIcon
                 className={cn(
                   'size-5 transition-all',
-                  count > 0 ? 'translate-x-0' : 'translate-x-[5px]'
+                  count > 0 ? 'translate-x-0' : 'translate-x-[6px]'
                 )}
               />
             ) : (
               <ShoppingBagIcon
                 className={cn(
                   'size-5 transition-all',
-                  count > 0 ? 'translate-x-0' : 'translate-x-[5px]'
+                  count > 0 ? 'translate-x-0' : 'translate-x-[6px]'
                 )}
               />
             )}
