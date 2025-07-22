@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: 📦 Build & Deploy to GitHub Pages
 
 on:
   push:
@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout
         uses: actions/checkout@v3
 
       - name: Setup Node.js
@@ -23,13 +23,13 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Install dependencies
+      - name: Install deps
         run: npm ci
 
-      - name: Build Vite app
+      - name: Build
         run: npm run build
 
-      - name: Upload build artifact
+      - name: Upload for Pages
         uses: actions/upload-pages-artifact@v1
         with:
           path: dist
