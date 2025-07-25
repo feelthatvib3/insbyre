@@ -88,7 +88,7 @@ export function Menu() {
               transition={{
                 delay: 0.3
               }}
-              className="flex w-full items-center gap-x-2 overflow-hidden rounded-2xl bg-white shadow-2xl transition duration-300"
+              className="flex w-full items-center gap-x-2 overflow-hidden rounded-2xl bg-white shadow-2xl"
             >
               <a
                 href={item.href}
