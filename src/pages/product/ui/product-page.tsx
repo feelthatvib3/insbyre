@@ -60,7 +60,7 @@ export const ProductPage = () => {
 
   if (error) {
     return (
-      <main>
+      <main className="grid min-h-dvh grid-rows-[auto_1fr]">
         <Header sticky />
         <div className="mx-auto max-w-[1200px] px-4 py-8">
           <p className="text-destructive">Товар не найден.</p>
@@ -71,7 +71,7 @@ export const ProductPage = () => {
 
   if (!product) {
     return (
-      <main>
+      <main className="grid min-h-dvh grid-rows-[auto_1fr]">
         <Header sticky />
         <div className="mx-auto max-w-[1200px] px-4 py-8">
           <p className="text-muted-foreground">Загрузка...</p>
@@ -81,7 +81,7 @@ export const ProductPage = () => {
   }
 
   return (
-    <main>
+    <main className="grid min-h-dvh grid-rows-[auto_1fr]">
       <Header sticky />
       <div className="space-y-8 px-4 py-4 lg:py-8 xl:px-0">
         <div className="mx-auto max-w-[1200px]">
@@ -111,6 +111,7 @@ export const ProductPage = () => {
                         disabled={!s.inStock}
                         onClick={() => setSize(s.size)}
                         className={cn(
+                          'rounded-xl',
                           s.size === size &&
                             'bg-united-nations-blue border-united-nations-blue hover:border-united-nations-blue text-primary-foreground'
                         )}

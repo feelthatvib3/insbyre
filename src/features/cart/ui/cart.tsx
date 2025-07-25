@@ -10,7 +10,7 @@ import { useOverlayStore } from 'shared/model/use-overlay-store';
 import { Button } from 'shared/ui/button';
 import { Input } from 'shared/ui/input';
 
-export function CartButton() {
+export function Cart() {
   const count = useCartStore((s) => s.getCount());
   const { items, getTotal, decrementQuantity, incrementQuantity } = useCartStore();
   const { isOverlayOpen, toggleOverlay, closeOverlay } = useOverlayStore();
@@ -79,7 +79,7 @@ export function CartButton() {
         variant="outline"
         className={cn(
           'relative gap-x-[3px] rounded-full !px-2 transition-all',
-          open ? 'bg-background' : '',
+          open ? 'bg-white' : '',
           count === 0
             ? 'w-[38px]'
             : count < 10
@@ -94,7 +94,6 @@ export function CartButton() {
         <AnimatePresence mode="wait">
           <motion.div
             key={open ? 'close' : 'bag'}
-            initial={{ scale: 0.8, translateX: 1.25, opacity: 0 }}
             animate={{ scale: 1, translateX: 0, opacity: 1 }}
             exit={{ scale: 0.8, translateX: 1.25, opacity: 0 }}
             transition={{ duration: 0.2 }}

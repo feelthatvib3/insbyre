@@ -1,5 +1,4 @@
 import { EnvelopeSimpleIcon, XIcon } from '@phosphor-icons/react';
-import { motion } from 'motion/react';
 import { useState } from 'react';
 
 import { contacts } from 'features/menu';
@@ -11,72 +10,49 @@ export function ContactsTile() {
 
   return (
     <div className="group relative flex size-full items-center justify-center overflow-hidden rounded-2xl select-none">
-      {/* Tile view (only triggers open on click) */}
-      <motion.div
-        onClick={() => setOpen(true)}
-        initial={{ opacity: 1, scale: 1 }}
-        animate={{
-          opacity: open ? 0 : 1,
-          scale: open ? 0.95 : 1,
-          pointerEvents: open ? 'none' : 'auto'
-        }}
-        transition={{
-          opacity: { duration: 0.3 },
-          scale: { duration: 0 }
-        }}
-        className="bg-united-nations-blue/5 flowers border-united-nations-blue/15 absolute inset-0 z-10 flex cursor-pointer items-center justify-center rounded-2xl border p-4 transition duration-300 md:items-end md:justify-start"
-      >
-        <div className="relative flex items-center gap-x-2">
-          <h2 className="font-display z-[1] text-lg uppercase transition duration-300 group-hover:translate-x-4 sm:text-3xl">
-            Контакты
-          </h2>
-          <EnvelopeSimpleIcon
-            size={20}
-            className="text-united-nations-blue absolute z-0 translate-y-0.5 opacity-0 transition duration-300 group-hover:-rotate-25 group-hover:opacity-100"
-          />
-        </div>
-      </motion.div>
-
-      {/* Contact links (with close button) */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{
-          opacity: open ? 1 : 0,
-          scale: open ? 1 : 0.95,
-          pointerEvents: open ? 'auto' : 'none'
-        }}
-        transition={{ delay: open ? 0.1 : 0, duration: 0.15 }}
-        className="z-20 flex size-full flex-col gap-2 md:flex-row lg:flex-col"
-      >
-        {contacts.map((item) => (
-          <a
-            key={item.name}
-            href={item.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={cn(
-              'font-display flex size-full items-center justify-center gap-x-2 rounded-2xl border p-4 uppercase transition sm:text-2xl',
-              item.name === 'Telegram'
-                ? 'bg-telegram/5 border-telegram/25 hover:border-telegram/50'
-                : 'bg-instagram/5 border-instagram/25 hover:border-instagram/50'
-            )}
-          >
-            <p className="md:hidden lg:block">{item.name}</p>
-            <item.icon
-              weight="fill"
-              className="text-united-nations-blue hidden md:block lg:hidden"
-            />
-          </a>
-        ))}
-
-        {/* Close button */}
-        <button
-          className="bg-destructive/5 border-destructive/20 hover:border-destructive/35 flex size-full cursor-pointer items-center justify-center rounded-2xl border p-2 transition"
-          onClick={() => setOpen(false)}
+      {!open && (
+        <div
+          onClick={() => setOpen(true)}
+          className="bg-united-nations-blue/5 flowers border-united-nations-blue/15 absolute inset-0 z-10 flex cursor-pointer items-center justify-center rounded-2xl border p-4 md:items-end md:justify-start"
         >
-          <XIcon className="size-6" />
-        </button>
-      </motion.div>
+          <div className="relative flex items-center gap-x-2">
+            <h2 className="font-display z-[1] text-lg uppercase transition group-hover:translate-x-4 sm:text-3xl">
+              Контакты
+            </h2>
+            <EnvelopeSimpleIcon
+              size={20}
+              className="text-united-nations-blue absolute z-0 translate-y-0.5 opacity-0 transition group-hover:-rotate-25 group-hover:opacity-100"
+            />
+          </div>
+        </div>
+      )}
+
+      {open && (
+        <div className="z-20 flex size-full flex-col gap-2 md:flex-row lg:flex-col">
+          {contacts.map((item) => (
+            <a
+              key={item.name}
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(
+                'font-display bg-united-nations-blue/5 border-united-nations-blue/15 hover:border-united-nations-blue/40 flex size-full items-center justify-center gap-x-2.5 rounded-2xl border p-4 uppercase transition sm:text-2xl'
+              )}
+            >
+              <item.icon weight="fill" className="text-united-nations-blue hidden md:block" />
+              <p className="text-united-nations-blue md:hidden lg:block">{item.name}</p>
+            </a>
+          ))}
+
+          {/* Close button */}
+          <button
+            className="bg-destructive/5 border-destructive/20 hover:border-destructive/35 flex size-full cursor-pointer items-center justify-center rounded-2xl border p-2"
+            onClick={() => setOpen(false)}
+          >
+            <XIcon className="text-destructive size-6" />
+          </button>
+        </div>
+      )}
     </div>
   );
 }

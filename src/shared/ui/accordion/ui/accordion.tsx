@@ -12,7 +12,7 @@ function AccordionItem({ className, ...props }: ComponentProps<typeof AccordionP
     <AccordionPrimitive.Item
       data-slot="accordion-item"
       className={cn(
-        'flowers-01 bg-united-nations-blue/5 border-united-nations-blue/5 rounded-2xl border',
+        'flowers-01 bg-united-nations-blue/5 border-united-nations-blue/5 rounded-xl border',
         className
       )}
       {...props}
@@ -52,7 +52,7 @@ function AccordionContent({
       className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden px-3 text-sm"
       {...props}
     >
-      <div className={cn('pt-0 pb-4', className)}>{children}</div>
+      <div className={cn('pt-0 pb-2', className)}>{children}</div>
     </AccordionPrimitive.Content>
   );
 }

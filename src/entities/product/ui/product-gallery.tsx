@@ -30,7 +30,7 @@ export function ProductGallery({ images, thumbnail }: ProductGalleryProps) {
         ))}
       </div>
 
-      <div className="aspect-[24/30] w-full overflow-hidden rounded-2xl">
+      <div className="aspect-square w-full overflow-hidden rounded-2xl">
         <img
           src={allImages[selectedImage]}
           alt="Main product image"

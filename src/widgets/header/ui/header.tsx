@@ -1,4 +1,4 @@
-import { CartButton } from 'features/cart';
+import { Cart } from 'features/cart';
 import { Menu } from 'features/menu';
 
 import { cn } from 'shared/lib/cn';
@@ -19,7 +19,7 @@ export function Header({ sticky }: HeaderProps) {
           Insbyre
         </a>
         <div className="flex items-center gap-x-2">
-          <CartButton />
+          <Cart />
           <Menu />
         </div>
       </div>

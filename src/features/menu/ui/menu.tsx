@@ -29,7 +29,7 @@ export function Menu() {
         variant="outline"
         className={cn(
           'relative gap-x-0.5 rounded-full !px-2 transition-all',
-          open ? 'bg-background' : ''
+          open ? 'bg-white' : ''
         )}
         style={{ zIndex }}
         onClick={() => toggleOverlay('menu')}
@@ -56,7 +56,7 @@ export function Menu() {
         )}
       >
         <motion.ul
-          className="bg-muted flex flex-col rounded-2xl p-2 shadow-2xl"
+          className="flex flex-col rounded-2xl bg-white p-2 shadow-2xl"
           initial={{ opacity: 0, y: -10 }}
           animate={open ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }}
           transition={{
@@ -88,13 +88,13 @@ export function Menu() {
               transition={{
                 delay: 0.3
               }}
-              className="bg-muted flex w-full items-center gap-x-2 rounded-2xl shadow-2xl"
+              className="flex w-full items-center gap-x-2 overflow-hidden rounded-2xl bg-white shadow-2xl transition duration-300"
             >
               <a
                 href={item.href}
                 target="_blank"
                 onClick={closeOverlay}
-                className="hover:bg-united-nations-blue/5 flex w-full items-center justify-center gap-x-2 rounded-[8px] p-4 transition"
+                className="hover:bg-united-nations-blue/5 flex w-full items-center justify-center gap-x-2 p-4 transition"
               >
                 <item.icon
                   className="text-united-nations-blue size-6 transition duration-300"
