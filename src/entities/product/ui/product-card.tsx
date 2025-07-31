@@ -13,11 +13,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
     >
       <div className="bg-united-nations-blue/5 flowers border-united-nations-blue/15 rounded-2xl border p-2 transition-all duration-300 group-hover:border-transparent group-hover:p-0">
         <div className="aspect-[1] overflow-hidden rounded-[8px] transition-all duration-300 group-hover:rounded-2xl">
-          <img
-            src={product.thumbnail || product.images[0]}
-            alt={product.name}
-            className="size-full object-cover"
-          />
+          <img src={product.images[0]} alt={product.name} className="size-full object-cover" />
         </div>
       </div>
 

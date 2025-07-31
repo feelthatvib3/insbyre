@@ -1,9 +1,12 @@
-import { PlusIcon } from '@phosphor-icons/react';
+import { FlowerIcon, PlusIcon } from '@phosphor-icons/react';
 import { motion } from 'motion/react';
 import { useEffect, useState } from 'react';
 
-import { contacts, menu } from 'features/menu';
+import { contacts } from 'features/menu';
 
+import { categoryIconMap } from 'entities/category';
+
+import { useCategoriesQuery } from 'shared/api/category/category.queries';
 import { cn } from 'shared/lib/cn';
 import { useOverlayStore } from 'shared/model/use-overlay-store';
 import { Button } from 'shared/ui/button';
@@ -13,6 +16,8 @@ export function Menu() {
   const open = isOverlayOpen('menu');
 
   const [zIndex, setZIndex] = useState<number>(45);
+
+  const { data: categories } = useCategoriesQuery();
 
   useEffect(() => {
     if (!open) {
@@ -63,21 +68,26 @@ export function Menu() {
             delay: 0.3
           }}
         >
-          {menu.map((item, index) => (
-            <motion.li key={index}>
-              <a
-                href={item.href}
-                onClick={closeOverlay}
-                className="hover:bg-united-nations-blue/5 flex items-center gap-x-3 rounded-[8px] p-3 transition sm:gap-x-4 sm:p-4"
-              >
-                <item.icon
-                  className="text-united-nations-blue size-5 transition duration-300"
-                  weight="fill"
-                />
-                <span className="font-display text-lg uppercase">{item.name}</span>
-              </a>
-            </motion.li>
-          ))}
+          {categories
+            ? categories.map((c, index) => {
+                const Icon = categoryIconMap[c.slug] ?? FlowerIcon;
+                return (
+                  <motion.li key={index}>
+                    <a
+                      href={`/products/${c.slug}`}
+                      onClick={closeOverlay}
+                      className="hover:bg-united-nations-blue/5 flex items-center gap-x-3 rounded-[8px] p-3 transition sm:gap-x-4 sm:p-4"
+                    >
+                      <Icon
+                        className="text-united-nations-blue size-5 transition duration-300"
+                        weight="fill"
+                      />
+                      <span className="font-display text-lg uppercase">{c.name}</span>
+                    </a>
+                  </motion.li>
+                );
+              })
+            : null}
         </motion.ul>
         <motion.ul className="flex items-center gap-x-2">
           {contacts.map((item, index) => (

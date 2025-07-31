@@ -1,7 +1,7 @@
 import { CheckCircleIcon, ShoppingBagIcon } from '@phosphor-icons/react';
 import { motion } from 'motion/react';
 import { AnimatePresence } from 'motion/react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { Header } from 'widgets/header';
@@ -10,19 +10,19 @@ import { useCartStore } from 'features/cart';
 
 import { ProductGallery } from 'entities/product';
 
+import { useGetProductBySlugQuery } from 'shared/api/product/product.queries';
 import { cn } from 'shared/lib/cn';
 import { formatPrice } from 'shared/lib/format-price';
-import type { Product } from 'shared/types/product';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from 'shared/ui/accordion';
 import { Button } from 'shared/ui/button';
 
 export const ProductPage = () => {
   const { productSlug } = useParams();
-  const [product, setProduct] = useState<Product | null>(null);
-  const [error, setError] = useState(false);
   const [size, setSize] = useState<string>('');
   const [sizeError, setSizeError] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
+
+  const { data: product, error } = useGetProductBySlugQuery(productSlug!);
 
   const addToCart = useCartStore((state) => state.addToCart);
 
@@ -41,7 +41,7 @@ export const ProductPage = () => {
       name: product.name,
       slug: product.slug,
       sku: product.sku,
-      thumbnail: product.thumbnail || product.images[0],
+      thumbnail: product.images[0],
       price: product.price,
       size
     });
@@ -49,14 +49,6 @@ export const ProductPage = () => {
     setIsAdded(true);
     setTimeout(() => setIsAdded(false), 2000);
   };
-
-  useEffect(() => {
-    if (!productSlug) return;
-
-    import(`shared/data/products/${productSlug}.json`)
-      .then((mod) => setProduct(mod.default))
-      .catch(() => setError(true));
-  }, [productSlug]);
 
   if (error) {
     return (
@@ -86,7 +78,7 @@ export const ProductPage = () => {
       <div className="space-y-8 px-4 py-4 lg:py-8 xl:px-0">
         <div className="mx-auto max-w-[1200px]">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-8">
-            <ProductGallery images={product.images} thumbnail={product.thumbnail} />
+            <ProductGallery images={product.images} thumbnail={product.images[0]} />
 
             <div className="space-y-4">
               <div className="space-y-0.5">
@@ -107,16 +99,15 @@ export const ProductPage = () => {
                     {product.sizes.map((s) => (
                       <Button
                         variant="outline"
-                        key={s.size}
-                        disabled={!s.inStock}
-                        onClick={() => setSize(s.size)}
+                        key={s}
+                        onClick={() => setSize(s)}
                         className={cn(
                           'rounded-xl',
-                          s.size === size &&
+                          s === size &&
                             'bg-united-nations-blue border-united-nations-blue hover:border-united-nations-blue text-primary-foreground'
                         )}
                       >
-                        {s.size}
+                        {s}
                       </Button>
                     ))}
                   </div>
