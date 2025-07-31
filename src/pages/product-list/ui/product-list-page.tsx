@@ -11,8 +11,6 @@ export function ProductListPage() {
 
   const { data: products } = useProductsQuery({ category: categorySlug });
 
-  console.log(products);
-
   return (
     <main>
       <Header sticky />
