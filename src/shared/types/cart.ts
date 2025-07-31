@@ -7,6 +7,6 @@ export interface CartItem {
   sku: Product['sku'];
   price: Product['price'];
   size?: string;
-  thumbnail: Product['thumbnail'];
+  thumbnail: string;
   quantity: number;
 }
