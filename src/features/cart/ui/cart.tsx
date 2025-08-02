@@ -44,7 +44,7 @@ export function Cart() {
 
     try {
       setIsLoading(true);
-      const { name, address, phone } = form;
+      const { name, address, phone, email } = form;
       const description = `${name} / ${address} / ${phone}`;
       const orderId = v4();
 
@@ -55,6 +55,7 @@ export function Cart() {
           amount: getTotal().toFixed(2),
           description,
           metadata: { orderId },
+          contacts: { name, address, phone, email },
           items,
           totalItems: getCount()
         })
