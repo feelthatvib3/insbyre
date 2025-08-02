@@ -48,7 +48,7 @@ export function Cart() {
       const description = `${name} / ${address} / ${phone}`;
       const orderId = v4();
 
-      const res = await fetch(`${import.meta.env.VITE_BASE_API}/create-payment`, {
+      const res = await fetch(`https://insbyre.feelthatvib3.workers.dev/create-payment`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
