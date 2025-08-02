@@ -1,6 +1,7 @@
 import { MinusIcon, PlusIcon, ShoppingBagIcon, XIcon } from '@phosphor-icons/react';
 import { AnimatePresence, motion } from 'motion/react';
 import { type FormEvent, useEffect, useState } from 'react';
+import { v4 } from 'uuid';
 
 import { PaymentButton, useCartStore } from 'features/cart';
 
@@ -12,7 +13,7 @@ import { Input } from 'shared/ui/input';
 
 export function Cart() {
   const count = useCartStore((s) => s.getCount());
-  const { items, getTotal, decrementQuantity, incrementQuantity } = useCartStore();
+  const { items, getTotal, getCount, decrementQuantity, incrementQuantity } = useCartStore();
   const { isOverlayOpen, toggleOverlay, closeOverlay } = useOverlayStore();
   const open = isOverlayOpen('cart');
   const [zIndex, setZIndex] = useState<number>(45);
@@ -45,6 +46,7 @@ export function Cart() {
       setIsLoading(true);
       const { name, address, phone } = form;
       const description = `${name} / ${address} / ${phone}`;
+      const orderId = v4();
 
       const res = await fetch(`${import.meta.env.VITE_BASE_API}/create-payment`, {
         method: 'POST',
@@ -52,9 +54,9 @@ export function Cart() {
         body: JSON.stringify({
           amount: getTotal().toFixed(2),
           description,
-          metadata: {
-            ...form
-          }
+          metadata: { orderId },
+          items,
+          totalItems: getCount()
         })
       });
 
