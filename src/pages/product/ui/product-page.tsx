@@ -4,6 +4,7 @@ import { AnimatePresence } from 'motion/react';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
+import { Footer } from 'widgets/footer';
 import { Header } from 'widgets/header';
 
 import { useCartStore } from 'features/cart';
@@ -63,20 +64,21 @@ export const ProductPage = () => {
 
   if (!product) {
     return (
-      <main className="grid min-h-dvh grid-rows-[auto_1fr]">
+      <main className="grid min-h-dvh grid-rows-[auto_1fr_auto]">
         <Header sticky />
-        <div className="mx-auto max-w-[1200px] px-4 py-8">
+        <div className="mx-auto w-full max-w-[1200px] px-4 py-8">
           <p className="text-muted-foreground">Загрузка...</p>
         </div>
+        <Footer />
       </main>
     );
   }
 
   return (
-    <main className="grid min-h-dvh grid-rows-[auto_1fr]">
+    <main className="grid min-h-dvh grid-rows-[auto_1fr_auto]">
       <Header sticky />
       <div className="space-y-8 px-4 py-4 lg:py-8 xl:px-0">
-        <div className="mx-auto max-w-[1200px]">
+        <div className="mx-auto w-full max-w-[1200px]">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-8">
             <ProductGallery images={product.images} thumbnail={product.images[0]} />
 
@@ -186,6 +188,7 @@ export const ProductPage = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </main>
   );
 };

@@ -12,7 +12,6 @@ export default function App() {
         <Route path="/products" element={<ProductListPage />} />
         <Route path="/products/:categorySlug" element={<ProductListPage />} />
         <Route path="/products/:categorySlug/:productSlug" element={<ProductPage />} />
-        {/* <Route path="*" element={<NotFoundPage />} /> */}
       </Routes>
     </BrowserRouter>
   );
